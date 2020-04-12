@@ -53,21 +53,22 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 -->
 	
     <head> 
-      <title>Which respiratory illness?</title>  <!-- title of app-->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <link rel="stylesheet" href="w3.css">
-      <link rel="stylesheet" href="w3-colors-flat.css">
-	   
-    
-	<script>
-        var Covid_19_count = 0; //results starting at 0 
+    <title>Which respiratory illness?</title>  <!-- title of app-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="w3.css">
+    <link rel="stylesheet" href="w3-colors-flat.css">
+     
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+  <script>
+      var Covid_19_count = 0; //results starting at 0 
       var Cold_count = 0;//results starting at 0
         var Flu_count = 0;
         var Allergies_count = 0;
   var resultText = document.getElementById ("results"); //intended for the results page that displays the percentages
-	
-	function Covid_19Add(){
+  
+      function Covid_19Add(){
           Covid_19_count += 1; //function adds one to the strep value 
         console.log("Covid_19", Covid_19_count) 
       }
@@ -82,19 +83,17 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
       function AllergiesAdd(){ // function adds one to the flu value
           Allergies_count += 1;
           console.log("Allergies", Allergies_count)
-     
-	}
-		
-		
-	function showResults() {
+      }
+
+      function showResults() {
           var myAnswers = {
               "Allergies":Allergies_count,
               "Flu":Flu_count,
               "Covid_19":Covid_19_count, 
               "Cold":Cold_count,
-		 
-	  }
-	  console.log(myAnswers);
+        
+          }
+          console.log(myAnswers);
           var ctx = document.getElementById('myChart').getContext('2d');
           var myChart_chart = new Chart(ctx, {
               type: 'bar', 
@@ -105,7 +104,9 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
                       data: [Allergies_count, Flu_count, Covid_19_count, Cold_count],
                     }]
                 },
-		 options: {
+
+            // Configuration options go here
+                options: {
                     scales: {
                         yAxes: [{
                             ticks: {
@@ -117,30 +118,30 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
                 }   
           })
       }
-	</script>
+  </script>
 </head>
 
 <style>	
 
 
 .body {
-     margin: 0em;
+   margin: 0em;
 }
 
 .page {  
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -100vw;
-    overflow-y: auto;
-    z-index: 0;
-    background-color: hsl(0,0%,100%);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  overflow-y: auto;
+  z-index: 0;
+  background-color: hsl(0,0%,100%);
 }
 
-  .page:target {
-    left: 0vw;
-    z-index: 1;
+.page:target {
+  left: 0vw;
+  z-index: 1;
 }
 </style>
 
@@ -149,15 +150,15 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   <h1>Which respiratory illness?</h1> <!-- title of app-->
 </div>
 
-	
+  
 <div id="content" class="w3-container"> <!-- header format and classification-->
-	<p>Are you feeling like you might have the flu but wonder if it is strep throat. Answer a few short questions to find out!</p>
-	
-	<a href="#one" class="w3-btn w3-red"> Go to Page One </a>
-	
-	<p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
- 	
-	<p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
+  <p>Are you feeling like you might have the flu but wonder if it is strep throat. Answer a few short questions to find out!</p>
+  
+  <a href="#one" class="w3-btn w3-red"> Go to Page One </a>
+  
+  <p>The following code has been developed by students and/or researchers of the Freshman Research Initiative DIY Diagnostics Stream at The University of Texas at 		Austin.  This code is shared for demonstration purposes and should not be considered a product -- it is for entertainment purposes only. Any user of this code 			does so at their own risk. Members of the DIY Stream, FRI, and The University of Texas system are not liable for anything related to this code.</p>
+   
+  <p>THIS CODE SHOULD NOT BE USED TO DIAGNOSE ANY KIND OF MEDICAL CONDITION.</p>
 
 <div class="page" id="one"> <!-- page one identification-->
   <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page one-->
@@ -165,33 +166,33 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   </div> 
   
 <div class="w3-card" style="width:30%">
-    <img src="https://i1.wp.com/familyfirst-urgentcare.com/wp-content/uploads/2017/12/flu-and-strep.jpg?resize=300%2C300&ssl=1" alt="Person" style="width:60%">
-    <div class="w3-container">
-      </div>
+    <img src="https://i1.wp.com/familyfirst-urgentcare.com/wp-content/uploads/2017/12/flu-and-strep.jpg?resize=300%2C300&ssl=1" alt="Person" style="width:60%">
+    <div class="w3-container">
+      </div>
   
-  
-  <br>
+  
+  <br>
   
       <div id="content" class="w3-container"> <!-- identifying content of page one-->
           <p>Do you have a cough?</p> <!-- question one -->
   <a href="#two" onclick="Covid_19Add(); ColdAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page two; documents one tally point for strep -->
   <a href="#two" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page two; documents one tally point for flu -->
   </div> <!-- end of page one -->
-	
+
 </div> <!-- new page -->
-	
+  
 <div class="page" id="two">  <!-- page two identification-->
   <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page two-->
       <h1>Question #2</h1> <!-- question 2 header-->
   </div>
   <div id="content" class="w3-container"> <!-- identifying content of page two-->
-  <p>Are you experiencing shortness of breath?</p> <!-- question two -->
+  <p>Are you experiencing shortness of breath</p> <!-- question two -->
   <a href="#three" onclick="Covid_19Add();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page three; documents one tally point for flu -->
   <a href="#three" onclick="ColdAdd(); FluAdd(); AllergiesAdd()" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page three; documents one tally point for strep -->
   </div>
   
 </div>	<!-- new page -->
-	
+  
 <div class="page" id="three"> <!-- page three identification-->
   <div id="header" class="w3-container w3-flat-carrot">  <!-- header of page three-->
       <h1>Question #3</h1> <!-- question 3 header-->
@@ -203,7 +204,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   </div>
   
 </div> <!-- new page -->
-	
+  
 <div class="page" id="four">  <!-- page four identification-->
   <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
       <h1>Question #4</h1> <!-- question 4 header-->
@@ -215,7 +216,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   </div>
   
 </div> <!-- new page -->
-	
+
 <div class="page" id="five">  <!-- page four identification-->
     <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
         <h1>Question #5</h1> <!-- question 4 header-->
@@ -228,7 +229,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     
   </div> <!-- new page -->
 
-<div class="page" id="six">  <!-- page four identification-->
+  <div class="page" id="six">  <!-- page four identification-->
     <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
         <h1>Question #6</h1> <!-- question 4 header-->
     </div>
@@ -239,8 +240,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     </div>
     
   </div> <!-- new page -->
-	
-<div class="page" id="seven">  <!-- page four identification-->
+
+  <div class="page" id="seven">  <!-- page four identification-->
     <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
         <h1>Question #7</h1> <!-- question 4 header-->
     </div>
@@ -252,7 +253,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     
   </div> <!-- new page -->
 
-<div class="page" id="eight">  <!-- page four identification-->
+  <div class="page" id="eight">  <!-- page four identification-->
     <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
         <h1>Question #8</h1> <!-- question 4 header-->
     </div>
@@ -264,7 +265,7 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     
   </div> <!-- new page -->
 
-<div class="page" id="nine">  <!-- page four identification-->
+  <div class="page" id="nine">  <!-- page four identification-->
     <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
         <h1>Question #9</h1> <!-- question 4 header-->
     </div>
@@ -275,8 +276,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     </div>
     
   </div> <!-- new page -->
-	
-<div class="page" id="ten">  <!-- page four identification-->
+
+  <div class="page" id="ten">  <!-- page four identification-->
     <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
         <h1>Question #10</h1> <!-- question 4 header-->
     </div>
@@ -285,8 +286,10 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
     <a href="#eleven" onclick="FluAdd(); Covid_19Add();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page five; documents one tally point for strep -->
     <a href="#eleven" onclick="ColdAdd(); AllergiesAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page five; documents one tally point for flu -->
     </div>
-	
-</div> <!-- new page -->
+    
+  
+    
+  </div> <!-- new page -->
 
 <div class="page" id="eleven"> <!-- page five identification-->
   <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page five-->
@@ -305,15 +308,15 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
 </div>
 
 
-		
-		
-		
-		
-		
-		
+      
+      
+      
+      
+      
+      
 <footer class="w3-bottom w3-container w3-flat-carrot"> <!-- footer-->
-	<p>DIY!</p> 
+  <p>DIY!</p> 
 </footer> 
-		
+      
 </body>
 </html>
