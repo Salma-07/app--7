@@ -64,48 +64,49 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   <script>
       var Covid_19_count = 0; //results starting at 0 
       var Cold_count = 0;//results starting at 0
-        var Flu_count = 0;
-        var Allergies_count = 0;
-  var resultText = document.getElementById ("results"); //intended for the results page that displays the percentages
+        var Flu_count = 0; //results starting at 0
+        var Allergies_count = 0; //results starting at 0
+  var resultText = document.getElementById ("results"); // results page that displays the bar graph
   
       function Covid_19Add(){
-          Covid_19_count += 1; //function adds one to the strep value 
+          Covid_19_count += 1; //function adds one to covid-19 value 
         console.log("Covid_19", Covid_19_count) 
       }
     function ColdAdd(){
-          Cold_count += 1; //function adds one to the strep value 
+          Cold_count += 1; //function adds one to cold value 
         console.log("Cold", Cold_count)
       }
       function FluAdd(){ // function adds one to the flu value
           Flu_count += 1;
         console.log("Flu", Flu_count)
       }
-      function AllergiesAdd(){ // function adds one to the flu value
+      function AllergiesAdd(){ // function adds one to the allergy value
           Allergies_count += 1;
           console.log("Allergies", Allergies_count)
       }
-
-      function showResults() {
+	// function to count multiple diagnosis
+      function showResults() { // variable functions; counts each variable to display final result
           var myAnswers = {
               "Allergies":Allergies_count,
               "Flu":Flu_count,
               "Covid_19":Covid_19_count, 
               "Cold":Cold_count,
-        
           }
-          console.log(myAnswers);
-          var ctx = document.getElementById('myChart').getContext('2d');
+	  // variable to show results for all answers
+          console.log(myAnswers); // variable input into chart
+          var ctx = document.getElementById('myChart').getContext('2d'); //identifies myChart & puts it in 2d
           var myChart_chart = new Chart(ctx, {
-              type: 'bar', 
+              type: 'bar', //type of chart
+		  // data for dataset
               data: {
-                  labels: ['Covid_19', 'Cold', 'Flu', 'Allergies'],
+                  labels: ['Covid_19', 'Cold', 'Flu', 'Allergies'], // y-axis
                   datasets: [{
                       label: 'data',
-                      data: [Allergies_count, Flu_count, Covid_19_count, Cold_count],
+                      data: [Allergies_count, Flu_count, Covid_19_count, Cold_count], 
                     }]
                 },
 
-            // Configuration options go here
+            // configuration options 
                 options: {
                     scales: {
                         yAxes: [{
@@ -175,8 +176,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   
       <div id="content" class="w3-container"> <!-- identifying content of page one-->
           <p>Do you have a cough?</p> <!-- question one -->
-  <a href="#two" onclick="Covid_19Add(); ColdAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page two; documents one tally point for strep -->
-  <a href="#two" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page two; documents one tally point for flu -->
+  <a href="#two" onclick="Covid_19Add(); ColdAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page two; documents illnesses under choice 'yes' -->
+  <a href="#two" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page two; documents illnesses under choice 'no'-->
   </div> <!-- end of page one -->
 
 </div> <!-- new page -->
@@ -187,8 +188,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   </div>
   <div id="content" class="w3-container"> <!-- identifying content of page two-->
   <p>Are you experiencing shortness of breath</p> <!-- question two -->
-  <a href="#three" onclick="Covid_19Add();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page three; documents one tally point for flu -->
-  <a href="#three" onclick="ColdAdd(); FluAdd(); AllergiesAdd()" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page three; documents one tally point for strep -->
+  <a href="#three" onclick="Covid_19Add();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page three; documents illnesses under choice 'yes'  -->
+  <a href="#three" onclick="ColdAdd(); FluAdd(); AllergiesAdd()" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page three; documents illnesses under choice 'no'-->
   </div>
   
 </div>	<!-- new page -->
@@ -199,8 +200,8 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   </div>
   <div id="content" class="w3-container"> <!-- identifying content of page three-->
   <p>Are you sneezing more than usual?</p> <!-- question three -->
-  <a href="#four" onclick="ColdAdd(); AllergiesAdd();"class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page four; documents one tally point for flu -->
-  <a href="#four" onclick="Covid_19Add(); FluAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page four; documents one tally point for strep -->
+  <a href="#four" onclick="ColdAdd(); AllergiesAdd();"class="w3-btn w3-green"> Yes </a> 
+  <a href="#four" onclick="Covid_19Add(); FluAdd();" class="w3-btn w3-red"> No </a> 
   </div>
   
 </div> <!-- new page -->
@@ -211,96 +212,96 @@ https://stackoverflow.com/questions/8211128/multiple-distinct-pages-in-one-html-
   </div>
   <div id="content" class="w3-container"> <!-- identifying content of page four-->
   <p>Are you experiencing a runny or stuffy nose?</p> <!-- question four -->
-  <a href="#five" onclick="ColdAdd(); AllergiesAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page five; documents one tally point for strep -->
-  <a href="#five" onclick="Covid_19Add();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page five; documents one tally point for flu -->
+  <a href="#five" onclick="ColdAdd(); AllergiesAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> 
+  <a href="#five" onclick="Covid_19Add();" class="w3-btn w3-red"> No </a> 
   </div>
   
 </div> <!-- new page -->
 
-<div class="page" id="five">  <!-- page four identification-->
-    <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
-        <h1>Question #5</h1> <!-- question 4 header-->
+<div class="page" id="five">  
+    <div id="header" class="w3-container w3-flat-carrot"> 
+        <h1>Question #5</h1> 
     </div>
-    <div id="content" class="w3-container"> <!-- identifying content of page four-->
-    <p>Do you have a sore throat?</p> <!-- question four -->
-    <a href="#six" onclick="Covid_19Add(); ColdAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page five; documents one tally point for strep -->
-    <a href="#six" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page five; documents one tally point for flu -->
-    </div>
-    
-  </div> <!-- new page -->
-
-  <div class="page" id="six">  <!-- page four identification-->
-    <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
-        <h1>Question #6</h1> <!-- question 4 header-->
-    </div>
-    <div id="content" class="w3-container"> <!-- identifying content of page four-->
-    <p>Do you have a fever?</p> <!-- question four -->
-    <a href="#seven" onclick="Covid_19Add(); ColdAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page five; documents one tally point for strep -->
-    <a href="#seven" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page five; documents one tally point for flu -->
+    <div id="content" class="w3-container">
+    <p>Do you have a sore throat?</p> 
+    <a href="#six" onclick="Covid_19Add(); ColdAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> 
+    <a href="#six" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> 
     </div>
     
   </div> <!-- new page -->
 
-  <div class="page" id="seven">  <!-- page four identification-->
-    <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
-        <h1>Question #7</h1> <!-- question 4 header-->
+  <div class="page" id="six">  
+    <div id="header" class="w3-container w3-flat-carrot"> 
+        <h1>Question #6</h1> 
     </div>
-    <div id="content" class="w3-container"> <!-- identifying content of page four-->
-    <p>Are you feeling tired and/or weak?</p> <!-- question four -->
-    <a href="#eight" onclick="ColdAdd(); AllergiesAdd(); FluAdd(); Covid_19Add();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page five; documents one tally point for strep -->
-    <a href="#eight" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page five; documents one tally point for flu -->
-    </div>
-    
-  </div> <!-- new page -->
-
-  <div class="page" id="eight">  <!-- page four identification-->
-    <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
-        <h1>Question #8</h1> <!-- question 4 header-->
-    </div>
-    <div id="content" class="w3-container"> <!-- identifying content of page four-->
-    <p>Are you experiencing any headaches?</p> <!-- question four -->
-    <a href="#nine" onclick="Covid_19Add(); AllergiesAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page five; documents one tally point for strep -->
-    <a href="#nine" onclick="ColdAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page five; documents one tally point for flu -->
+    <div id="content" class="w3-container"> 
+    <p>Do you have a fever?</p> 
+    <a href="#seven" onclick="Covid_19Add(); ColdAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> 
+    <a href="#seven" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> 
     </div>
     
   </div> <!-- new page -->
 
-  <div class="page" id="nine">  <!-- page four identification-->
-    <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
-        <h1>Question #9</h1> <!-- question 4 header-->
+  <div class="page" id="seven"> 
+    <div id="header" class="w3-container w3-flat-carrot"> 
+        <h1>Question #7</h1>
     </div>
-    <div id="content" class="w3-container"> <!-- identifying content of page four-->
-    <p>Are you experiencing any body aches or pains?</p> <!-- question four -->
-    <a href="#ten" onclick="ColdAdd(); Covid_19Add(); FluAdd();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page five; documents one tally point for strep -->
-    <a href="#ten" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page five; documents one tally point for flu -->
+    <div id="content" class="w3-container"> 
+    <p>Are you feeling tired and/or weak?</p> 
+    <a href="#eight" onclick="ColdAdd(); AllergiesAdd(); FluAdd(); Covid_19Add();" class="w3-btn w3-green"> Yes </a> 
+    <a href="#eight" class="w3-btn w3-red"> No </a> 
     </div>
     
   </div> <!-- new page -->
 
-  <div class="page" id="ten">  <!-- page four identification-->
-    <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page four-->
-        <h1>Question #10</h1> <!-- question 4 header-->
+  <div class="page" id="eight">  
+    <div id="header" class="w3-container w3-flat-carrot"> 
+        <h1>Question #8</h1> 
     </div>
-    <div id="content" class="w3-container"> <!-- identifying content of page four-->
-    <p>Are you experiencing diarrhea?</p> <!-- question four -->
-    <a href="#eleven" onclick="FluAdd(); Covid_19Add();" class="w3-btn w3-green"> Yes </a> <!-- answer choice "yes"; takes you to page five; documents one tally point for strep -->
-    <a href="#eleven" onclick="ColdAdd(); AllergiesAdd();" class="w3-btn w3-red"> No </a> <!-- answer choice "no"; takes you to page five; documents one tally point for flu -->
+    <div id="content" class="w3-container"> 
+    <p>Are you experiencing any headaches?</p> 
+    <a href="#nine" onclick="Covid_19Add(); AllergiesAdd(); FluAdd();" class="w3-btn w3-green"> Yes </a> 
+    <a href="#nine" onclick="ColdAdd();" class="w3-btn w3-red"> No </a> 
+    </div>
+    
+  </div> <!-- new page -->
+
+  <div class="page" id="nine">  
+    <div id="header" class="w3-container w3-flat-carrot"> 
+        <h1>Question #9</h1> 
+    </div>
+    <div id="content" class="w3-container"> 
+    <p>Are you experiencing any body aches or pains?</p> 
+    <a href="#ten" onclick="ColdAdd(); Covid_19Add(); FluAdd();" class="w3-btn w3-green"> Yes </a> 
+    <a href="#ten" onclick="AllergiesAdd();" class="w3-btn w3-red"> No </a> 
+    </div>
+    
+  </div> <!-- new page -->
+
+  <div class="page" id="ten">  
+    <div id="header" class="w3-container w3-flat-carrot">
+        <h1>Question #10</h1> 
+    </div>
+    <div id="content" class="w3-container"> 
+    <p>Are you experiencing diarrhea?</p> 
+    <a href="#eleven" onclick="FluAdd(); Covid_19Add();" class="w3-btn w3-green"> Yes </a> 
+    <a href="#eleven" onclick="ColdAdd(); AllergiesAdd();" class="w3-btn w3-red"> No </a> 
     </div>
     
   
     
   </div> <!-- new page -->
 
-<div class="page" id="eleven"> <!-- page five identification-->
-  <div id="header" class="w3-container w3-flat-carrot"> <!-- header of page five-->
-      <h1> Results Processing </h1> <!-- button to view results-->
+<div class="page" id="eleven"> 
+  <div id="header" class="w3-container w3-flat-carrot"> 
+      <h1> Results Processing </h1> 
   </div>	
   <div id="content" class="w3-container">
-  <a href= "#results" onclick= "showResults();" class="w3-btn w3-green"> Click here to View Results </a> <!-- takes you to page 6-->
+  <a href= "#results" onclick= "showResults();" class="w3-btn w3-green"> Click here to View Results </a> <!-- button to view results-->
   
-<div class="page" id="results"> <!-- page 6-->
+<div class="page" id="results"> 
   <div id="header" class="w3-container w3-flat-carrot">
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart"></canvas> <!-- canvas id runs function -->
       <h1>Your Results!</h1> <!-- shows results -->
   <p id="results"></p>
 <p> Results </p>
